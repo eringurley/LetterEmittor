@@ -1,10 +1,16 @@
 const EventEmitter = require ('events');
 
-class LetterEmitter extends EventEmitter {
-  read() {
+module.exports = class LetterEmitter extends EventEmitter {
+  read(str) {
     //take a string
-    //split the string .split
-    //emit an event for each item in the string .forEach
-    //.emit or this.emit
+      str
+      //split the string .split
+      .split('')
+      //emit an event for each item in the string .forEach
+      .forEach((letter, offset) => {
+        //.emit or this.emit
+        this.emit('letter', { letter, offset });
+      });
+      this.emit('end');
   }
-}
+};
